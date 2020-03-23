@@ -20,8 +20,8 @@ public class GameBoardEasy extends GameBoard{
 	        super();
 	        int cardPair = 1;
 	       
-	        for(int  i = 0;i < 5;i++){  //i<13
-	            if(i == 4){//i==12
+	        for(int  i = 0;i < 5;i++){  
+	            if(i == 4){
 	                ImageIcon imgIcon = new ImageIcon(loader.getResource(imgFiles[i]));
 	                
 	                WildCard = new Card(imgIcon);
