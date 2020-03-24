@@ -1,10 +1,10 @@
-import java.net.MalformedURLException;
+
 
 public class MainTest {
 
 	
-		public static void main(String args[]) throws MalformedURLException {
+		public static void main(String args[])  {
 			
-			 new MainMenu();
+			MainMenu.getMainMenu();
 		}
 }

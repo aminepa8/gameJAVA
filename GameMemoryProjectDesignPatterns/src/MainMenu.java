@@ -1,6 +1,7 @@
 
 import javax.swing.*;
 
+
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.BorderLayout;
@@ -11,13 +12,16 @@ import java.awt.event.*;
 import java.net.MalformedURLException;
 import java.net.URL;    
 public class MainMenu {    
+	
+	private static MainMenu MenuGame =null;
 	public ClassLoader loader = getClass().getClassLoader();
 	private  JFrame f;    
 	private int LevelNumber ;
-	public MainMenu() throws MalformedURLException{
-		playSong("Futureopolis.wav") ; //Generate an exception , that's why we used throws MalformedURLException
+	AudioClip clip;
+	private MainMenu() {
+		
 		f=new JFrame("Main Menu");   
-		   
+		
 		
 		JButton b=new JButton("Play");  
 		b.setBounds(200,100,90,20);  
@@ -63,17 +67,17 @@ public class MainMenu {
 				  case 0:
 						GameBoardEasy Board1 = new GameBoardEasy();
 						MemoryEasy LVL1 = (MemoryEasy) Board1.CreateMemory();
-						HideJframe(f);
+						HideJframe();
 				    break;
 				  case 1:
 					  GameBoardMedium Board2 = new GameBoardMedium();
 					  MemoryMeduim LVL2 = (MemoryMeduim) Board2.CreateMemory();
-					  HideJframe(f);
+					  HideJframe();
 				    break;
 				  case 2:
 					  GameBoardHard Board3 = new GameBoardHard();
 					  MemoryHard LVL3 = (MemoryHard) Board3.CreateMemory();
-					  HideJframe(f);
+					  HideJframe();
 					  break;
 				  default:
 				    System.out.println("LOL");
@@ -113,17 +117,38 @@ public class MainMenu {
 	}    
 	
 	
-	   public void HideJframe(JFrame f) {
-		   f.dispose();//this hide the jFrame , and the song stay playing in the Background
-		   f.setDefaultCloseOperation(3);//this close it and stop the Main Song
+	   public void HideJframe() {
+		  
+		   f.setVisible(false);//this hide the jFrame , and the song stay playing in the Background
+		   clip.stop();
+		  // f.setDefaultCloseOperation(3);//this close it and stop the Main Song
 	   }
 	   
 	   
-	   public  void playSong(String filename) throws MalformedURLException{
+	   
+	   public  void playSong() {
+		   String filename=  "Futureopolis.wav";
 	    	URL Song = loader.getResource(filename);
 	    	System.out.println(Song.toString());
-	    	AudioClip clip = Applet.newAudioClip(Song);
+	    	clip = Applet.newAudioClip(Song);
 	    	clip.loop(); //Play song nonStop
 	}
+	   
+	   public static void ShowJframe() {
+		   MenuGame.playSong();
+		   MenuGame.f.setVisible(true);
+		   
+	   }
+	   
+	   //Singleton DesignPattern
+	   public static MainMenu getMainMenu() {
+			if(MenuGame==null) {
+				MenuGame = new MainMenu();
+				
+			}
+			
+			ShowJframe();
+			return MenuGame;
+		}
 } 
 

@@ -3,7 +3,6 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,11 +37,14 @@ public class MemoryMeduim extends Memory{
 		 // Allocate the interface elements
 	        JButton restart = new JButton("Restart");
 	        JButton quit = new JButton("Quit");
+	        JButton BackBtn = new JButton("Menu");
+	        
 	        timerLabel = new JLabel("Timer: 0");
 	        errorLabel = new JLabel("Errors: 0");
 
 	        quit.addActionListener(this);
 	        restart.addActionListener(this);
+	        BackBtn.addActionListener(this);
 	        //declares action listener for the game timer
 	        ActionListener seconds = new ActionListener() {
 	            @Override
@@ -83,7 +85,8 @@ public class MemoryMeduim extends Memory{
 	        gameBoard.fillBoardView(boardView);
 
 	        // Add required interface elements to the "label" JPanel
-	        labelView.setLayout(new GridLayout(2, 4, 2, 2));
+	        labelView.setLayout(new GridLayout(2, 5, 2, 2));
+	        labelView.add(BackBtn);
 	        labelView.add(quit);
 	        labelView.add(restart);
 	        labelView.add(timerLabel);
@@ -125,11 +128,17 @@ public class MemoryMeduim extends Memory{
 	public void actionPerformed(ActionEvent e)   {
         //functionality of quit button
         if(e.getActionCommand().equals("Quit")){
+        	System.out.println("Byeeeee");
             System.exit(0);
         }
         //functionality of restart button
         else if(e.getActionCommand().equals("Restart")){
             restartGame();
+        }
+        else if(e.getActionCommand().equals("Menu")){
+        	
+            MainMenu.getMainMenu();
+        	this.dispose();
         }
         else if(!delay.isRunning()){
             Card currCard = (Card)e.getSource();

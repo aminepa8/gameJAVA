@@ -38,11 +38,14 @@ public class MemoryHard extends Memory{
 		 // Allocate the interface elements
 	        JButton restart = new JButton("Restart");
 	        JButton quit = new JButton("Quit");
+	        JButton BackBtn = new JButton("Menu");
+	        
 	        timerLabel = new JLabel("Timer: 0");
 	        errorLabel = new JLabel("Errors: 0");
 
 	        quit.addActionListener(this);
 	        restart.addActionListener(this);
+	        BackBtn.addActionListener(this);
 	        //declares action listener for the game timer
 	        ActionListener seconds = new ActionListener() {
 	            @Override
@@ -83,7 +86,8 @@ public class MemoryHard extends Memory{
 	        gameBoard.fillBoardView(boardView);
 
 	        // Add required interface elements to the "label" JPanel
-	        labelView.setLayout(new GridLayout(2, 4, 2, 2));
+	        labelView.setLayout(new GridLayout(2, 5, 2, 2));
+	        labelView.add(BackBtn);
 	        labelView.add(quit);
 	        labelView.add(restart);
 	        labelView.add(timerLabel);
@@ -130,6 +134,10 @@ public class MemoryHard extends Memory{
         //functionality of restart button
         else if(e.getActionCommand().equals("Restart")){
             restartGame();
+        }
+        else if(e.getActionCommand().equals("Menu")){
+            MainMenu.getMainMenu();
+        	this.dispose();
         }
         else if(!delay.isRunning()){
             Card currCard = (Card)e.getSource();
