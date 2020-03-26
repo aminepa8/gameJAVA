@@ -1,3 +1,5 @@
+package FactoryDesignPattern;
+
 import javax.swing.*;
 
 import java.awt.Image;

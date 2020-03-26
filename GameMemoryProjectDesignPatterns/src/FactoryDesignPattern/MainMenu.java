@@ -1,6 +1,6 @@
-
+package FactoryDesignPattern;
+import shapesDesignPatterns.ShapesBoardAdapter;
 import javax.swing.*;
-
 
 import java.applet.Applet;
 import java.applet.AudioClip;
@@ -37,7 +37,7 @@ public class MainMenu {
 		JPanel LogoGIFpanel = new JPanel(new BorderLayout());
 		JPanel BtnPanel = new JPanel(new BorderLayout());
 		//-----
-		String Levels[]={"Easy Level ","Meduim Level","Hard Level"};        
+		String Levels[]={"Easy Level ","Meduim Level","Hard Level","Shapes Level"};        
 		final JComboBox cb=new JComboBox(Levels);    
 		cb.setBounds(50, 100,90,20);    
 
@@ -77,6 +77,11 @@ public class MainMenu {
 				  case 2:
 					  GameBoardHard Board3 = new GameBoardHard();
 					  MemoryHard LVL3 = (MemoryHard) Board3.CreateMemory();
+					  HideJframe();
+					  break;
+				  case 3:
+					  ShapesBoardAdapter Board4 = new ShapesBoardAdapter();
+					  MemoryMeduimShapes LVL4 = (MemoryMeduimShapes) Board4.CreateMemory();
 					  HideJframe();
 					  break;
 				  default:

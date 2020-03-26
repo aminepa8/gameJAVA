@@ -1,3 +1,5 @@
+package FactoryDesignPattern;
+
 
 @SuppressWarnings("serial")
 public class MemoryMeduim extends Memory{
@@ -5,6 +7,7 @@ public class MemoryMeduim extends Memory{
 	private static  GameBoardMedium gameBoard= new GameBoardMedium();
 	
 	 public MemoryMeduim(){
+		 
 		 super("Memory Game Meduim Level" ,gameBoard);
 		 
 	    }
