@@ -1,24 +1,19 @@
-import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class GameBoardEasy extends GameBoard{
 	private String imgFiles[] = {"1.png", "2.png", "3.png", "4.png","smile.png"};
-  //  private List<Card> cards = new ArrayList<Card>();
     private ClassLoader loader = getClass().getClassLoader();
     
-    
+    ArrayList<ImageIcon> ImageIconList = super.getImageList(loader, imgFiles);
     public GameBoardEasy() {
-    	
+    	GameBoard.setArraySize(ImageIconList.size() ,true);
     }
 	 public GameBoardEasy(ActionListener event)  {
 	        super();
-	        ArrayList<ImageIcon> ImageIconList = super.getImageList(loader, imgFiles);
+	      
 	        super.BoardMaker(event, ImageIconList, true);
 	    }
 	 

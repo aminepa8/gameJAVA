@@ -1,9 +1,5 @@
-import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -13,14 +9,14 @@ public class GameBoardHard extends GameBoard{
             "11.png", "12.png", "smile.png"};
    
     private ClassLoader loader = getClass().getClassLoader();
-   
+    ArrayList<ImageIcon> ImageIconList = super.getImageList(loader, imgFiles);
     
     public GameBoardHard() {
-    	
+    	GameBoard.setArraySize(ImageIconList.size() ,true);
     }
 	 public GameBoardHard(ActionListener event)  {
 	        super();
-	        ArrayList<ImageIcon> ImageIconList = super.getImageList(loader, imgFiles);
+	        
 	        super.BoardMaker(event, ImageIconList, true);
 	    }
 	 

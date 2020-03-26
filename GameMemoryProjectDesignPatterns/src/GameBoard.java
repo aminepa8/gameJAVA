@@ -13,7 +13,39 @@ public abstract class GameBoard {
    
 	private List<Card> cards = new ArrayList<Card>();
 	private Card FirstCardOfPair, SecondCardOfPair, WildCard;
-    public List<Card> getCards() {
+	private static boolean HasWildCard;
+	private static int ArraySize = 0;
+	
+    public static int getArraySize() {
+		return ArraySize;
+	}
+	public static void setArraySize(int arraySize ,boolean CheckWildCard) {
+		System.out.println( "GameBoard setArraySize :"+arraySize);
+		if(CheckWildCard) {
+			int size = (arraySize - 1);
+		      size = (size * 2 ) +1;
+		      size = (int) Math.sqrt(size);
+			ArraySize = size;
+		}else {
+			ArraySize = arraySize /2;
+		}
+		
+	}
+	public void setHasWildCard(boolean hasWildCard) {
+		HasWildCard = hasWildCard;
+	}
+	public static boolean isHasWildCard() {
+		return HasWildCard;
+	}
+	
+	//--
+	public static int getArrayLength() {
+		return ArraySize;
+		
+	}
+	
+	//--
+	public List<Card> getCards() {
 		return cards;
 	}
 	public void setCards(List<Card> cards) {
@@ -30,14 +62,14 @@ public abstract class GameBoard {
     }
     // deleting the cards from the board
     public void resetBoard(){
-        for (int c = 0;c < cards.size();c++){
-            cards.remove(c);
-        }
+    	cards.clear();
     }
     //Good Method Haha Avoid Repetiton or WhatEver LOL.....
     public void BoardMaker(ActionListener event,ArrayList<ImageIcon> ImageList,boolean HasWilCard) {
         int cardPair = 1;
-	       
+        setHasWildCard(HasWilCard);
+        ArraySize = ImageList.size();
+        System.out.println("ArraySize from BorderMaker Method : "+ArraySize);
         for(int  i = 0;i < ImageList.size();i++){  
             if(i == ImageList.size() -1 && HasWilCard ){
                 ImageIcon imgIcon = ImageList.get(i);
