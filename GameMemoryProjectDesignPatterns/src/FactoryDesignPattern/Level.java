@@ -8,16 +8,43 @@ import java.util.List;
 
 import javax.swing.*;
 
+import ObserverDesignPattern.PairsObserver;
+import ObserverDesignPattern.ErrorObserver;
 public abstract class Level extends JFrame implements ActionListener{
+	
+	
 	
 	// Core game play objects
 	private  GameBoard gameBoardL;
     private Card prevCard1 = null, prevCard2 = null;
 
     // Labels to display game info
-    private JLabel errorLabel, timerLabel;
+    private JLabel  timerLabel;
+    //Used bY Observers
+	private static JLabel pairsFoundLabel = new JLabel("Pairs Found : 0");
+	private static JLabel errorLabel = new JLabel("Errors: 0");
 
-    // layout objects: Views of the board and the label area
+    public static JLabel getErrorLabel() {
+		return errorLabel;
+	}
+
+	public static void setErrorLabel(JLabel errorLabel) {
+		Level.errorLabel = errorLabel;
+	}
+
+	public static JLabel getPairsFoundLabel() {
+		return pairsFoundLabel;
+	}
+
+	public static  void setPairsFoundLabel(JLabel PairsFoundLabel) {
+		pairsFoundLabel = PairsFoundLabel;
+	}
+	
+	//Observers
+		
+		PairsObserver pairsObserver = new PairsObserver();
+		ErrorObserver errorObserver = new ErrorObserver();
+	// layout objects: Views of the board and the label area
     private static JPanel boardView;
 	private JPanel labelView;
 
@@ -49,8 +76,8 @@ public abstract class Level extends JFrame implements ActionListener{
     	        JButton BackBtn = new JButton("Menu");
     	        
     	        timerLabel = new JLabel("Timer: 0");
-    	        errorLabel = new JLabel("Errors: 0");
-
+    	        errorLabel = errorObserver.getErrorLabel();
+    	        pairsFoundLabel = pairsObserver.getPairsFoundLabel();
     	        quit.addActionListener(this);
     	        restart.addActionListener(this);
     	        BackBtn.addActionListener(this);
@@ -89,18 +116,19 @@ public abstract class Level extends JFrame implements ActionListener{
     	       // gameBoard = new GameBoard(this);
 
     	        // Add the game board to the board layout area
-    	        System.out.println(" LOL :: "+gameBoard.getArraySize());
+    	        System.out.println(" Size :: "+gameBoard.getArraySize());
     	        boardView.setLayout(new GridLayout(gameBoard.getArraySize(), gameBoard.getArraySize(), 10, 10));//GridLayout(int rows, int columns, int hgap, int vgap):
     	        //
     	        gameBoard.fillBoardView(boardView);
 
     	        // Add required interface elements to the "label" JPanel
-    	        labelView.setLayout(new GridLayout(2, 5, 2, 2));
+    	        labelView.setLayout(new GridLayout(2, 6, 2, 2));
     	        labelView.add(BackBtn);
     	        labelView.add(quit);
     	        labelView.add(restart);
     	        labelView.add(timerLabel);
     	        labelView.add(errorLabel);
+    	        labelView.add(pairsFoundLabel);
 
     	        // Both panels should now be individually layered out
     	        // Add both panels to the container
@@ -168,6 +196,7 @@ public abstract class Level extends JFrame implements ActionListener{
                     prevCard2.addActionListener(this);
                     delay.start();
                     errorCount +=1;
+                    
                     errorLabel.setText("Errors: " + errorCount);
                     new Timer(750, new ActionListener() {
                         @Override
@@ -184,6 +213,7 @@ public abstract class Level extends JFrame implements ActionListener{
                 //  change previous cards back to null
                 else if(prevCard1.ID() == prevCard2.ID()){
                     pairsFound +=1;
+                    pairsObserver.update(pairsFound);
                     //disabled  the button so it wont be used again(ActionListener already disabled)
                     prevCard1.setEnabled(false);
                     prevCard2.setEnabled(false);
@@ -216,6 +246,7 @@ public abstract class Level extends JFrame implements ActionListener{
          errorCount = 0;
          timerLabel.setText("Timer: 0");
          errorLabel.setText("Errors: 0");
+         pairsFoundLabel.setText("Pairs Found : 0");
       // Clear the boardView and have the gameBoard generate a new layout
          boardView.removeAll();
          gameBoardL.resetBoard();
