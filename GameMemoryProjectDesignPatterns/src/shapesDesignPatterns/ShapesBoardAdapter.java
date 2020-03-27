@@ -5,9 +5,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import FactoryDesignPattern.GameBoard;
-import FactoryDesignPattern.Memory;
+import FactoryDesignPattern.Level;
 
-import FactoryDesignPattern.MemoryMeduimShapes;
+import FactoryDesignPattern.LevelEasyShapes;
 
 public class ShapesBoardAdapter extends GameBoard{
 	ArrayList<ImageIcon> ShapesList = ShapesAdapterList();
@@ -32,9 +32,9 @@ public ShapesBoardAdapter() {
 	}
 	
 	@Override
-	public Memory CreateMemory() {
+	public Level CreateMemory() {
 	// TODO Auto-generated method stub
-	return new MemoryMeduimShapes();
+	return new LevelEasyShapes();
 	}
 
 	

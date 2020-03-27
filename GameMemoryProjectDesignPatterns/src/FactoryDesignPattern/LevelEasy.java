@@ -3,14 +3,14 @@ package FactoryDesignPattern;
 
 @SuppressWarnings("serial")
 
-public class MemoryEasy extends Memory{
+public class LevelEasy extends Level{
 	
 	private static  GameBoardEasy gameBoard= new GameBoardEasy();
 	
  
     
     
-	 public MemoryEasy(){
+	 public LevelEasy(){
 		 super("Memory Game Easy Level",gameBoard);
 
 	    }
@@ -22,7 +22,7 @@ public class MemoryEasy extends Memory{
        super.restartGame(); 
       
        gameBoard = new GameBoardEasy(this);
-       gameBoard.fillBoardView(Memory.getBoardView());
+       gameBoard.fillBoardView(Level.getBoardView());
        setVisible(true);
        
     }

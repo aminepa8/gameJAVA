@@ -3,13 +3,13 @@ package FactoryDesignPattern;
 
 
 @SuppressWarnings("serial")
-public class MemoryHard extends Memory{
+public class LevelHard extends Level{
 	
 	private static  GameBoardHard gameBoard= new GameBoardHard();
 	
     
     
-	 public MemoryHard(){
+	 public LevelHard(){
 		 super("Memory Game Hard Level",gameBoard);
 	    }
 	 
@@ -19,7 +19,7 @@ public class MemoryHard extends Memory{
 		 super.restartGame();
        
         gameBoard = new GameBoardHard(this);
-        gameBoard.fillBoardView(Memory.getBoardView());
+        gameBoard.fillBoardView(Level.getBoardView());
         setVisible(true);
     }
 

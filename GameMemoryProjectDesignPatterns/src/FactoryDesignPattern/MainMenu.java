@@ -1,16 +1,14 @@
 package FactoryDesignPattern;
 import shapesDesignPatterns.ShapesBoardAdapter;
 import javax.swing.*;
-
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.*;
-import java.net.MalformedURLException;
 import java.net.URL;    
+
 public class MainMenu {    
 	
 	private static MainMenu MenuGame =null;
@@ -41,17 +39,17 @@ public class MainMenu {
 		final JComboBox cb=new JComboBox(Levels);    
 		cb.setBounds(50, 100,90,20);    
 
-		LogoGIFpanel.add(label);//,BorderLayout.NORTH
+		LogoGIFpanel.add(label);
 		LogoGIFpanel.setBackground(Color.black);
-		BtnPanel.add(cb);//,BorderLayout.NORTH
-		BtnPanel.add(b);//,BorderLayout.CENTER
-		BtnPanel.add(AboutBtn);//,BorderLayout.SOUTH
+		BtnPanel.add(cb);
+		BtnPanel.add(b);
+		BtnPanel.add(AboutBtn);
 		BtnPanel.add(ExitBtn);
-		BtnPanel.setLayout(new GridLayout(4, 1, 2, 2));
+		BtnPanel.setLayout(new GridLayout(4, 1, 2, 2));//GridLayout(int rows, int columns, int hgap, int vgap):
     
 		f.add(LogoGIFpanel,BorderLayout.NORTH); 
 		f.add(BtnPanel,BorderLayout.CENTER); 
-		//f.setLayout(new GridLayout(3, 3, 2, 2));    //GridLayout(int rows, int columns, int hgap, int vgap):
+		   
 		f.setSize(300,400);    
 		f.setVisible(true);   
 		f.setDefaultCloseOperation(3);
@@ -66,26 +64,26 @@ public class MainMenu {
 				
 				  case 0:
 						GameBoardEasy Board1 = new GameBoardEasy();
-						MemoryEasy LVL1 = (MemoryEasy) Board1.CreateMemory();
+						LevelEasy LVL1 = (LevelEasy) Board1.CreateMemory();
 						HideJframe();
 				    break;
 				  case 1:
 					  GameBoardMedium Board2 = new GameBoardMedium();
-					  MemoryMeduim LVL2 = (MemoryMeduim) Board2.CreateMemory();
+					  LevelMeduim LVL2 = (LevelMeduim) Board2.CreateMemory();
 					  HideJframe();
 				    break;
 				  case 2:
 					  GameBoardHard Board3 = new GameBoardHard();
-					  MemoryHard LVL3 = (MemoryHard) Board3.CreateMemory();
+					  LevelHard LVL3 = (LevelHard) Board3.CreateMemory();
 					  HideJframe();
 					  break;
 				  case 3:
 					  ShapesBoardAdapter Board4 = new ShapesBoardAdapter();
-					  MemoryMeduimShapes LVL4 = (MemoryMeduimShapes) Board4.CreateMemory();
+					  LevelEasyShapes LVL4 = (LevelEasyShapes) Board4.CreateMemory();
 					  HideJframe();
 					  break;
 				  default:
-				    System.out.println("LOL");
+				    System.out.println("NOthing ");
 				}
 			}  
 			
@@ -124,9 +122,9 @@ public class MainMenu {
 	
 	   public void HideJframe() {
 		  
-		   f.setVisible(false);//this hide the jFrame , and the song stay playing in the Background
-		   clip.stop();
-		  // f.setDefaultCloseOperation(3);//this close it and stop the Main Song
+		   f.setVisible(false);
+		   clip.stop();//Stop Music
+		  
 	   }
 	   
 	   

@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.swing.*;
 
-public abstract class Memory extends JFrame implements ActionListener{
+public abstract class Level extends JFrame implements ActionListener{
 	
 	// Core game play objects
 	private  GameBoard gameBoardL;
@@ -28,7 +28,7 @@ public abstract class Memory extends JFrame implements ActionListener{
 	}
 
 
-// Record keeping counts and times
+	// Record keeping counts and times
 	private int clickCount = 0, gameTime = 0, errorCount = 0;
     private int pairsFound = 0, wildCardFound;
 
@@ -38,7 +38,7 @@ public abstract class Memory extends JFrame implements ActionListener{
 	private Timer delay;
 
 
-	public Memory(String TitleLevel ,GameBoard gameBoard){
+	public Level(String TitleLevel ,GameBoard gameBoard){
        super(TitleLevel);
        
     
@@ -80,7 +80,7 @@ public abstract class Memory extends JFrame implements ActionListener{
 
     	        // Allocate two major panels to hold interface
     	        labelView = new JPanel();  // used to hold labels
-    	        boardView = new JPanel();  // used to hold game board
+    	        boardView = new JPanel();  // used to hold game board cards and stuff ^-^
 
     	        // get the content pane, onto which everything is eventually added
     	        Container c = getContentPane();
@@ -102,7 +102,7 @@ public abstract class Memory extends JFrame implements ActionListener{
     	        labelView.add(timerLabel);
     	        labelView.add(errorLabel);
 
-    	        // Both panels should now be individually layed out
+    	        // Both panels should now be individually layered out
     	        // Add both panels to the container
     	        c.add(labelView, BorderLayout.NORTH);
     	        c.add(boardView, BorderLayout.CENTER);
@@ -184,7 +184,7 @@ public abstract class Memory extends JFrame implements ActionListener{
                 //  change previous cards back to null
                 else if(prevCard1.ID() == prevCard2.ID()){
                     pairsFound +=1;
-                    //greys out the button so it wont be used again(ActionListener already disabled)
+                    //disabled  the button so it wont be used again(ActionListener already disabled)
                     prevCard1.setEnabled(false);
                     prevCard2.setEnabled(false);
                     prevCard1 = null;

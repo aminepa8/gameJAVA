@@ -1,10 +1,10 @@
 package FactoryDesignPattern;
 import shapesDesignPatterns.ShapesBoardAdapter;
-public class MemoryMeduimShapes extends Memory{
+public class LevelEasyShapes extends Level{
 	
 	private static  ShapesBoardAdapter gameBoard= new ShapesBoardAdapter();
 	
-	 public MemoryMeduimShapes(){
+	 public LevelEasyShapes(){
 		 
 		 super("Memory Game Meduim Shapes Level" ,gameBoard);
 		 
@@ -17,7 +17,7 @@ public class MemoryMeduimShapes extends Memory{
         
         
         gameBoard = new ShapesBoardAdapter(this);
-        gameBoard.fillBoardView(Memory.getBoardView());
+        gameBoard.fillBoardView(Level.getBoardView());
         setVisible(true);
     }
 

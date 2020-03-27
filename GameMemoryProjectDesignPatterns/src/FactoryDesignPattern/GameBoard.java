@@ -66,7 +66,7 @@ public abstract class GameBoard {
     public void resetBoard(){
     	cards.clear();
     }
-    //Good Method Haha Avoid Repetiton or WhatEver LOL.....
+   
     public void BoardMaker(ActionListener event,ArrayList<ImageIcon> ImageList,boolean HasWilCard) {
         int cardPair = 1;
         setHasWildCard(HasWilCard);
@@ -102,7 +102,7 @@ public abstract class GameBoard {
     	   
         }
     }
-    public abstract Memory CreateMemory();
+    public abstract Level CreateMemory();
     
     
     public ArrayList<ImageIcon> getImageList(ClassLoader loader,String[] imgFiles) {

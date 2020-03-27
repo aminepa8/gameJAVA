@@ -31,9 +31,9 @@ public class GameBoardHard extends GameBoard{
 	 }
 
 	@Override
-	public Memory CreateMemory() {
+	public Level CreateMemory() {
 		// TODO Auto-generated method stub
-		return new MemoryHard();
+		return new LevelHard();
 	}
 	 
 	 

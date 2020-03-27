@@ -19,7 +19,7 @@ public class RoundRectangle extends Shape{
 	      g2.setColor(super.getColorShape());
 	      int width = super.getHeight();
 	      int height = super.getWidth();
-	      g2.fillRoundRect(10, 20,height , width, 15, 15);
+	      g2.fillRoundRect(20,20,height , width, 15, 15);
 	      g2.dispose();
 	      return RoundRectImg;
 	}

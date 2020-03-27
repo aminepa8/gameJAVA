@@ -2,11 +2,11 @@ package FactoryDesignPattern;
 
 
 @SuppressWarnings("serial")
-public class MemoryMeduim extends Memory{
+public class LevelMeduim extends Level{
 	
 	private static  GameBoardMedium gameBoard= new GameBoardMedium();
 	
-	 public MemoryMeduim(){
+	 public LevelMeduim(){
 		 
 		 super("Memory Game Meduim Level" ,gameBoard);
 		 
@@ -19,7 +19,7 @@ public class MemoryMeduim extends Memory{
         
         
         gameBoard = new GameBoardMedium(this);
-        gameBoard.fillBoardView(Memory.getBoardView());
+        gameBoard.fillBoardView(Level.getBoardView());
         setVisible(true);
     }
 

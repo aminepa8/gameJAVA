@@ -29,9 +29,9 @@ public class GameBoardEasy extends GameBoard{
 	 }
 
 	@Override
-	public Memory CreateMemory() {
+	public Level CreateMemory() {
 		// TODO Auto-generated method stub
-		return new MemoryEasy();
+		return new LevelEasy();
 	}
 	 
 	 
