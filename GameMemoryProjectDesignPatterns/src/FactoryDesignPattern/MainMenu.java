@@ -132,7 +132,7 @@ public class MainMenu {
 	   public  void playSong() {
 		   String filename=  "Futureopolis.wav";
 	    	URL Song = loader.getResource(filename);
-	    	System.out.println(Song.toString());
+	    	//System.out.println(Song.toString());
 	    	clip = Applet.newAudioClip(Song);
 	    	clip.loop(); //Play song nonStop
 	}

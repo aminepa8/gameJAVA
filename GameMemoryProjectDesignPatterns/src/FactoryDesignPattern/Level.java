@@ -116,7 +116,7 @@ public abstract class Level extends JFrame implements ActionListener{
     	       // gameBoard = new GameBoard(this);
 
     	        // Add the game board to the board layout area
-    	        System.out.println(" Size :: "+gameBoard.getArraySize());
+    	      //  System.out.println(" Size :: "+gameBoard.getArraySize());
     	        boardView.setLayout(new GridLayout(gameBoard.getArraySize(), gameBoard.getArraySize(), 10, 10));//GridLayout(int rows, int columns, int hgap, int vgap):
     	        //
     	        gameBoard.fillBoardView(boardView);

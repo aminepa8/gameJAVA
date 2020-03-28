@@ -22,7 +22,7 @@ public abstract class GameBoard {
 		return ArraySize;
 	}
 	public static void setArraySize(int arraySize ,boolean CheckWildCard) {
-		System.out.println( "GameBoard setArraySize :"+arraySize);
+	//	System.out.println( "GameBoard setArraySize :"+arraySize);
 		if(CheckWildCard) {
 			int size = (arraySize - 1);
 		      size = (size * 2 ) +1;
@@ -71,7 +71,7 @@ public abstract class GameBoard {
         int cardPair = 1;
         setHasWildCard(HasWilCard);
         ArraySize = ImageList.size();
-        System.out.println("ArraySize from BorderMaker Method : "+ArraySize);
+        //System.out.println("ArraySize from BorderMaker Method : "+ArraySize);
         for(int  i = 0;i < ImageList.size();i++){  
             if(i == ImageList.size() -1 && HasWilCard ){
                 ImageIcon imgIcon = ImageList.get(i);
@@ -112,7 +112,7 @@ public abstract class GameBoard {
     	for(int i = 0 ; i < imgFiles.length; i++) {
     		
     		ImageIcon imgIcon = new ImageIcon(loader.getResource(imgFiles[i]));
-    		System.out.println(imgFiles[i]);
+    	//	System.out.println(imgFiles[i]);
     		ImageIconList.add(imgIcon);
     	}
     	
